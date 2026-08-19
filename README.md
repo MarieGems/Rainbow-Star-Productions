@@ -10,25 +10,24 @@ Take the existing site's real content and proof (60+ five-star reviews, named co
 
 ## What's here
 
-- Full desktop-to-mobile responsive homepage (`index.html`)
-- Custom type system: Josefin Sans (display), Cormorant Garamond (editorial serif/italic), Work Sans (body) — all self-hosted, no external font requests
+- Full desktop-to-mobile responsive homepage in one file (`index.html`) — inline CSS/JS, no build step, no external JS libraries
+- Custom type system: Josefin Sans (display), Cormorant Garamond (editorial serif/italic), Work Sans (body), loaded via Google Fonts
 - Hand-built Art Deco motifs: stepped "crown" frame, radiating sunburst, marquee bulb twinkle, ticket-stub testimonial cards — no icon libraries or template kits
-- Real photography and trust assets (hero photo, client-logo strip, veteran-owned badge) pulled from the source site
+- Restrained motion throughout — hero parallax, nav pulse/shine, draw-on checkmarks, count-up stats, hover lifts — all transform/opacity-based so it stays smooth on low-end hardware, and all respect `prefers-reduced-motion`
+- **Works fully without JavaScript**: scroll-reveal, count-up, and the mobile menu (CSS-only checkbox toggle) all degrade to a correct, fully visible static page if JS never runs
+- The client roster (McDonald's, Cargill, The Cotillion, Old Cowtown Museum) is set as typographic text, not the low-res screenshot graphic from the original site
 
 ## Structure
 
 ```
-index.html
-assets/
-├── css/       fonts.css (font-face declarations), styles.css (design system + layout)
-├── js/        main.js (mobile nav toggle, scroll-reveal)
-├── fonts/     self-hosted .woff2 files (Google Fonts, SIL Open Font License)
-└── images/    hero photo, client trust strip, veteran-owned badge (.webp)
+index.html   — everything: markup, styles, script
 ```
+
+The only two external resources are the Google Fonts stylesheet and the hero photo, which is hotlinked from Rainbow Star Productions' own Squarespace CDN with a themed gradient fallback if it fails to load. Everything else is inline. If this becomes a real production build, swap the hotlinked hero photo for a self-hosted file.
 
 ## Running it
 
-No build step — it's static HTML/CSS/JS. Open `index.html` directly in a browser, or serve the folder with any static server:
+No build step, no dependencies. Just open `index.html` directly in a browser, or serve it with any static server:
 
 ```bash
 npx serve .
